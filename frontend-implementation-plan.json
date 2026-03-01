@@ -1,0 +1,94 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Standalone Payroll Tax Calculator (Australia, India, USA, UK, Custom)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create standalone PayrollTaxCalculator component with multi-region input support",
+      "acceptanceCriteria": [
+        "Region selector shows exactly 5 options: Australia, India, USA, UK, Custom/Generic",
+        "Pay frequency dropdown includes Weekly, Fortnightly, Monthly, Annually",
+        "Gross salary, allowances, and super/pension fields are present and accept numeric input",
+        "All inputs are validated (e.g., salary must be positive)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx",
+          "operation": "create",
+          "description": "Create the PayrollTaxCalculatorTab component with a comprehensive input panel accepting: gross salary (numeric), pay frequency selector (Weekly/Fortnightly/Monthly/Annually), allowances (numeric, optional), superannuation/pension contribution (numeric percentage, optional), and a region selector dropdown with exactly five options (Australia, India, USA, UK, Custom/Generic). Include form validation ensuring positive numeric values for salary and appropriate ranges for percentages. Use shadcn UI form primitives (Select, Input, Label) styled with Tailwind utility classes matching the app's saffron/emerald OKLCH tokens. Structure the component with clearly separated input and results sections, initialized with empty results until calculation is triggered."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement region-specific tax calculation logic for all five regions",
+      "acceptanceCriteria": [
+        "Switching region updates the tax calculation logic and relevant input fields",
+        "Australia: Medicare levy and super are applied correctly",
+        "India: toggling Old vs New regime recalculates tax using the correct slabs",
+        "USA: FICA components (Social Security + Medicare) are shown separately; a state tax rate input is present",
+        "UK: NI contributions are calculated and displayed separately from income tax",
+        "Custom/Generic: user can add/remove tax bracket rows; calculation uses those brackets"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx",
+          "operation": "modify",
+          "description": "Implement region-specific tax calculation logic within PayrollTaxCalculatorTab. For Australia: apply ATO progressive income tax brackets (FY 2024-25: 0-18,200 @ 0%, 18,201-45,000 @ 19%, 45,001-120,000 @ 32.5%, 120,001-180,000 @ 37%, 180,001+ @ 45%), Medicare levy at 2%, and employer superannuation at 11% (editable). For India: implement both Old regime (5-10 lakh @ 20%, 10+ lakh @ 30%) and New regime (3-6 lakh @ 5%, 6-9 lakh @ 10%, 9-12 lakh @ 15%, 12-15 lakh @ 20%, 15+ lakh @ 30%) with standard deduction ₹50,000, PF contribution field, and health/education cess at 4% of tax. For USA: apply federal progressive brackets (2024: 0-11,000 @ 10%, 11,001-44,725 @ 12%, 44,726-95,375 @ 22%, 95,376-182,100 @ 24%, 182,101-231,250 @ 32%, 231,251-578,125 @ 35%, 578,126+ @ 37%), FICA Social Security at 6.2% (up to $168,600 wage base), Medicare at 1.45%, and a flat state tax rate input field. For UK: apply PAYE bands (2024-25: Personal Allowance £12,570 @ 0%, £12,571-50,270 @ 20% Basic, £50,271-125,140 @ 40% Higher, £125,141+ @ 45% Additional) and National Insurance Class 1 employee contributions (£12,570-50,270 @ 12%, £50,271+ @ 2%). For Custom/Generic: provide a dynamic tax bracket editor allowing users to add/remove rows with income threshold and rate percentage fields, plus flat deduction rate and pension/super rate inputs. Ensure calculations convert between pay frequencies correctly (weekly → fortnightly → monthly → annual) and handle edge cases like zero income or negative adjustments gracefully."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Display detailed results breakdown with per-period and annual figures",
+      "acceptanceCriteria": [
+        "Results section shows both per-period and annual figures side by side",
+        "Each deduction line is labeled clearly and shows the correct computed value",
+        "Net take-home pay equals gross pay minus all deductions",
+        "Currency symbol matches the selected region (AUD, INR, USD, GBP)",
+        "Results update immediately when any input changes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx",
+          "operation": "modify",
+          "description": "Add a detailed results breakdown section displaying computed payroll values in a card-based layout. Show two columns: per-selected-period (weekly/fortnightly/monthly) and annual figures. Include line items for: Gross Pay, Allowances (if entered), Taxable Income, Income Tax, and region-specific deductions (Medicare Levy for Australia, PF and Cess for India, FICA Social Security and FICA Medicare and State Tax for USA, National Insurance for UK, custom deductions for Custom/Generic), Total Deductions, and Net (Take-Home) Pay. Format all monetary values using the appropriate currency symbol based on region: AUD for Australia, INR for India (using Indian number formatting with lakhs/crores via formatters.ts utilities), USD for USA and Custom, GBP for UK. Use Intl.NumberFormat for currency formatting. Highlight Net Pay with a distinct visual treatment (larger font, accent color). Implement live recalculation triggered by any input change using React state and useEffect, ensuring results update immediately without requiring a manual 'Calculate' button click (though include the button as well for explicit user action). Display zero or placeholder text when no calculation has been performed yet."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Wire PayrollTaxCalculatorTab into Dashboard tab navigation",
+      "acceptanceCriteria": [
+        "A 'Payroll Tax Calculator' tab is visible and clickable in the dashboard navigation",
+        "Clicking the tab renders the PayrollTaxCalculatorTab component",
+        "No existing tabs are removed or broken"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Import the PayrollTaxCalculatorTab component and register it as a new tab within the existing Dashboard tab navigation structure. Add the tab to the 'Finance' group (or 'Operations' if Finance is full) with the label 'Payroll Tax Calculator'. Insert the tab definition in the appropriate position within the TAB_GROUPS array, ensuring the tab value is unique (e.g., 'payroll-tax-calculator'). Map the tab value to render <PayrollTaxCalculatorTab /> in the tab content rendering logic. Verify that the existing tab structure remains intact and that no other tabs are affected by this addition."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Style PayrollTaxCalculatorTab to match app design system with card-based responsive layout",
+      "acceptanceCriteria": [
+        "Component uses existing CSS custom property tokens and shadcn components",
+        "Dark mode renders correctly without color contrast issues",
+        "Layout is responsive and usable on both desktop and mobile viewports",
+        "Results panel clearly separates income tax, statutory deductions, and net pay"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx",
+          "operation": "modify",
+          "description": "Apply comprehensive styling to PayrollTaxCalculatorTab using the app's existing design system. Use Tailwind utility classes referencing OKLCH custom properties (saffron/emerald accent colors, background/foreground variables) defined in frontend/src/index.css. Structure the layout with a card-based design: use shadcn Card components for the input panel and results panel. On desktop viewports (md and above), arrange input and results side-by-side in a two-column grid; on mobile, stack them vertically. Within the results panel, create distinct visual sections for income tax calculations, statutory deductions (region-specific), and net take-home pay using nested Cards or bordered divs with spacing. Ensure dark mode compatibility by using semantic color tokens (e.g., bg-background, text-foreground, border-border) that adapt automatically. Include a 'Calculate' button styled with the primary button variant from shadcn, positioned prominently in the input panel. Add subtle hover and focus states to interactive elements. Test responsive breakpoints to ensure the component is fully usable on mobile (320px+), tablet (768px+), and desktop (1024px+) viewports."
+        }
+      ]
+    }
+  ]
+}

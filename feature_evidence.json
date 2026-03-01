@@ -1,0 +1,125 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-new-standalone-payrolltaxcalculator-component-at-frontend-src-components-tabs-payrolltaxcalculatortab-tsx-that-accepts-the-following-inputs-gross-salary-numeric-pay-frequency-weekly-fortnightly-monthly-annually-allowances-numeric-optional-superannuation-pension-contribution-numeric-as-percentage-optional-and-region-selector-australia-india-usa-uk-custom-generic",
+      "featureTitle": "Create a new standalone PayrollTaxCalculator component at `frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx` that accepts the following inputs: gross salary (numeric), pay frequency (weekly / fortnightly / monthly / annually), allowances (numeric, optional), superannuation/pension contribution (numeric as percentage, optional), and region selector (Australia, India, USA, UK, Custom/Generic).",
+      "files": [
+        "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "qr-code@1.0.0",
+        "camera@1.0.0",
+        "http-outcalls@3.0.0",
+        "github-export-icp-cli@1.0.0",
+        "stripe@3.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-region-specific-tax-calculation-logic-within-the-payrolltaxcalculatortab-component-for-all-five-regions-1-australia-ato-progressive-income-tax-brackets-fy-2024-25-medicare-levy-2-employer-superannuation-11-default-editable-2-india-both-old-and-new-tax-regime-options-fy-2024-25-standard-deduction-provident-fund-pf-contribution-health-and-education-cess-4-3-usa-federal-progressive-income-tax-brackets-2024-fica-social-security-6-2-up-to-wage-base-and-medicare-1-45-and-a-flat-generic-state-tax-rate-field-4-uk-paye-tax-bands-2024-25-personal-allowance-12-570-basic-20-higher-40-additional-45-national-insurance-class-1-employee-contributions-5-custom-generic-user-defined-tax-brackets-add-remove-rows-with-income-threshold-and-rate-flat-deduction-rate-and-flat-pension-super-rate",
+      "featureTitle": "Implement region-specific tax calculation logic within the PayrollTaxCalculatorTab component for all five regions: (1) Australia — ATO progressive income tax brackets (FY 2024-25), Medicare levy (2%), employer superannuation (11% default, editable); (2) India — both Old and New tax regime options (FY 2024-25), standard deduction, Provident Fund (PF) contribution, health and education cess (4%); (3) USA — federal progressive income tax brackets (2024), FICA Social Security (6.2% up to wage base) and Medicare (1.45%), and a flat/generic state tax rate field; (4) UK — PAYE tax bands (2024-25: Personal Allowance £12,570, Basic 20%, Higher 40%, Additional 45%), National Insurance Class 1 employee contributions; (5) Custom/Generic — user-defined tax brackets (add/remove rows with income threshold and rate %), flat deduction rate, and flat pension/super rate.",
+      "files": [
+        "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "qr-code@1.0.0",
+        "camera@1.0.0",
+        "http-outcalls@3.0.0",
+        "github-export-icp-cli@1.0.0",
+        "stripe@3.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-a-detailed-results-breakdown-after-calculation-showing-all-of-the-following-per-selected-pay-period-and-annually-gross-pay-allowances-taxable-income-income-tax-region-specific-deductions-e-g-medicare-levy-super-pension-ni-fica-social-security-fica-medicare-pf-state-tax-total-deductions-and-net-take-home-pay-format-all-monetary-values-in-the-appropriate-currency-for-the-selected-region-aud-inr-usd-gbp-use-usd-for-custom",
+      "featureTitle": "Display a detailed results breakdown after calculation, showing all of the following per selected pay period and annually: Gross Pay, Allowances, Taxable Income, Income Tax, region-specific deductions (e.g., Medicare Levy, Super/Pension, NI, FICA Social Security, FICA Medicare, PF, state tax), Total Deductions, and Net (Take-Home) Pay. Format all monetary values in the appropriate currency for the selected region (AUD, INR, USD, GBP; use USD for Custom).",
+      "files": [
+        "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "qr-code@1.0.0",
+        "camera@1.0.0",
+        "http-outcalls@3.0.0",
+        "github-export-icp-cli@1.0.0",
+        "stripe@3.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-the-payrolltaxcalculatortab-as-a-new-tab-entry-in-the-existing-dashboard-tab-navigation-in-frontend-src-pages-dashboard-tsx-place-it-within-an-appropriate-tab-group-finance-or-operations-the-tab-label-should-be-payroll-tax-calculator",
+      "featureTitle": "Add the PayrollTaxCalculatorTab as a new tab entry in the existing Dashboard tab navigation in `frontend/src/pages/Dashboard.tsx`. Place it within an appropriate tab group (Finance or Operations). The tab label should be 'Payroll Tax Calculator'.",
+      "files": [
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "qr-code@1.0.0",
+        "camera@1.0.0",
+        "http-outcalls@3.0.0",
+        "github-export-icp-cli@1.0.0",
+        "stripe@3.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-style-the-payrolltaxcalculatortab-to-match-the-existing-app-design-system-saffron-emerald-oklch-tokens-tailwind-utility-classes-shadcn-ui-primitives-dark-mode-support-use-card-based-layout-with-a-left-top-input-panel-and-a-right-bottom-results-panel-use-distinct-visual-sections-for-each-deduction-category-in-the-results-breakdown-include-a-calculate-button-as-well-as-live-recalculation-on-input-change",
+      "featureTitle": "Style the PayrollTaxCalculatorTab to match the existing app design system (saffron/emerald OKLCH tokens, Tailwind utility classes, shadcn UI primitives, dark mode support). Use card-based layout with a left/top input panel and a right/bottom results panel. Use distinct visual sections for each deduction category in the results breakdown. Include a 'Calculate' button as well as live recalculation on input change.",
+      "files": [
+        "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "qr-code@1.0.0",
+        "camera@1.0.0",
+        "http-outcalls@3.0.0",
+        "github-export-icp-cli@1.0.0",
+        "stripe@3.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

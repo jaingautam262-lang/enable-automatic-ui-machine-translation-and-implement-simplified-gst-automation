@@ -1,0 +1,82 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-01T07:15:43.733Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 5,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create a new standalone PayrollTaxCalculator component at `frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx` that accepts the following inputs: gross salary (numeric), pay frequency (weekly / fortnightly / monthly / annually), allowances (numeric, optional), superannuation/pension contribution (numeric as percentage, optional), and region selector (Australia, India, USA, UK, Custom/Generic).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Implement region-specific tax calculation logic within the PayrollTaxCalculatorTab component for all five regions: (1) Australia — ATO progressive income tax brackets (FY 2024-25), Medicare levy (2%), employer superannuation (11% default, editable); (2) India — both Old and New tax regime options (FY 2024-25), standard deduction, Provident Fund (PF) contribution, health and education cess (4%); (3) USA — federal progressive income tax brackets (2024), FICA Social Security (6.2% up to wage base) and Medicare (1.45%), and a flat/generic state tax rate field; (4) UK — PAYE tax bands (2024-25: Personal Allowance £12,570, Basic 20%, Higher 40%, Additional 45%), National Insurance Class 1 employee contributions; (5) Custom/Generic — user-defined tax brackets (add/remove rows with income threshold and rate %), flat deduction rate, and flat pension/super rate.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Display a detailed results breakdown after calculation, showing all of the following per selected pay period and annually: Gross Pay, Allowances, Taxable Income, Income Tax, region-specific deductions (e.g., Medicare Levy, Super/Pension, NI, FICA Social Security, FICA Medicare, PF, state tax), Total Deductions, and Net (Take-Home) Pay. Format all monetary values in the appropriate currency for the selected region (AUD, INR, USD, GBP; use USD for Custom).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Add the PayrollTaxCalculatorTab as a new tab entry in the existing Dashboard tab navigation in `frontend/src/pages/Dashboard.tsx`. Place it within an appropriate tab group (Finance or Operations). The tab label should be 'Payroll Tax Calculator'.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Dashboard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Dashboard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Style the PayrollTaxCalculatorTab to match the existing app design system (saffron/emerald OKLCH tokens, Tailwind utility classes, shadcn UI primitives, dark mode support). Use card-based layout with a left/top input panel and a right/bottom results panel. Use distinct visual sections for each deduction category in the results breakdown. Include a 'Calculate' button as well as live recalculation on input change.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx",
+    "frontend/src/pages/Dashboard.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

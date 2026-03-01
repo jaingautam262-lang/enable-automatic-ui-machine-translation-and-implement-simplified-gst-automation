@@ -1,0 +1,125 @@
+{
+  "kind": "build_request",
+  "title": "Add Standalone Payroll Tax Calculator (Australia, India, USA, UK, Custom)",
+  "projectName": "BizAccounts Pro",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a new standalone PayrollTaxCalculator component at `frontend/src/components/tabs/PayrollTaxCalculatorTab.tsx` that accepts the following inputs: gross salary (numeric), pay frequency (weekly / fortnightly / monthly / annually), allowances (numeric, optional), superannuation/pension contribution (numeric as percentage, optional), and region selector (Australia, India, USA, UK, Custom/Generic).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-12",
+          "msg-14"
+        ],
+        "quotes": [
+          "gross salary, pay frequency (weekly/fortnightly/monthly), allowances, superannuation/pension contributions, tax brackets a custom/generic setup and Australia, India, USA, UK a standalone calculator tool"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Region selector shows exactly 5 options: Australia, India, USA, UK, Custom/Generic",
+        "Pay frequency dropdown includes Weekly, Fortnightly, Monthly, Annually",
+        "Gross salary, allowances, and super/pension fields are present and accept numeric input",
+        "All inputs are validated (e.g., salary must be positive)"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement region-specific tax calculation logic within the PayrollTaxCalculatorTab component for all five regions: (1) Australia — ATO progressive income tax brackets (FY 2024-25), Medicare levy (2%), employer superannuation (11% default, editable); (2) India — both Old and New tax regime options (FY 2024-25), standard deduction, Provident Fund (PF) contribution, health and education cess (4%); (3) USA — federal progressive income tax brackets (2024), FICA Social Security (6.2% up to wage base) and Medicare (1.45%), and a flat/generic state tax rate field; (4) UK — PAYE tax bands (2024-25: Personal Allowance £12,570, Basic 20%, Higher 40%, Additional 45%), National Insurance Class 1 employee contributions; (5) Custom/Generic — user-defined tax brackets (add/remove rows with income threshold and rate %), flat deduction rate, and flat pension/super rate.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-12",
+          "msg-14"
+        ],
+        "quotes": [
+          "Australia — Income tax brackets (ATO), Medicare levy (2%), superannuation (11% employer)",
+          "India — New & old tax regime options, PF contributions, standard deduction",
+          "USA — Federal income tax brackets, FICA (Social Security + Medicare), state tax (flat/generic)",
+          "UK — PAYE tax bands, National Insurance contributions (NI)",
+          "Custom/Generic — User-defined tax brackets and deduction rates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Switching region updates the tax calculation logic and relevant input fields",
+        "Australia: Medicare levy and super are applied correctly",
+        "India: toggling Old vs New regime recalculates tax using the correct slabs",
+        "USA: FICA components (Social Security + Medicare) are shown separately; a state tax rate input is present",
+        "UK: NI contributions are calculated and displayed separately from income tax",
+        "Custom/Generic: user can add/remove tax bracket rows; calculation uses those brackets"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Display a detailed results breakdown after calculation, showing all of the following per selected pay period and annually: Gross Pay, Allowances, Taxable Income, Income Tax, region-specific deductions (e.g., Medicare Levy, Super/Pension, NI, FICA Social Security, FICA Medicare, PF, state tax), Total Deductions, and Net (Take-Home) Pay. Format all monetary values in the appropriate currency for the selected region (AUD, INR, USD, GBP; use USD for Custom).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-14"
+        ],
+        "quotes": [
+          "Breakdown showing gross pay, tax withheld, deductions, and net (take-home) pay per pay period and annually"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Results section shows both per-period and annual figures side by side",
+        "Each deduction line is labeled clearly and shows the correct computed value",
+        "Net take-home pay equals gross pay minus all deductions",
+        "Currency symbol matches the selected region (AUD, INR, USD, GBP)",
+        "Results update immediately when any input changes"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add the PayrollTaxCalculatorTab as a new tab entry in the existing Dashboard tab navigation in `frontend/src/pages/Dashboard.tsx`. Place it within an appropriate tab group (Finance or Operations). The tab label should be 'Payroll Tax Calculator'.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-12",
+          "msg-14"
+        ],
+        "quotes": [
+          "a standalone calculator tool"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A 'Payroll Tax Calculator' tab is visible and clickable in the dashboard navigation",
+        "Clicking the tab renders the PayrollTaxCalculatorTab component",
+        "No existing tabs are removed or broken"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Style the PayrollTaxCalculatorTab to match the existing app design system (saffron/emerald OKLCH tokens, Tailwind utility classes, shadcn UI primitives, dark mode support). Use card-based layout with a left/top input panel and a right/bottom results panel. Use distinct visual sections for each deduction category in the results breakdown. Include a 'Calculate' button as well as live recalculation on input change.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-14"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Component uses existing CSS custom property tokens and shadcn components",
+        "Dark mode renders correctly without color contrast issues",
+        "Layout is responsive and usable on both desktop and mobile viewports",
+        "Results panel clearly separates income tax, statutory deductions, and net pay"
+      ]
+    }
+  ],
+  "constraints": [
+    "All tax calculation logic must be implemented purely in the frontend (no backend changes required)",
+    "Do not modify any files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "Do not alter existing tab components or backend/main.mo"
+  ],
+  "nonGoals": [
+    "Payroll record persistence to the backend",
+    "Integration with the existing PayrollTab (employee management, pay slips, Form 16)",
+    "Real-time tax authority API lookups",
+    "PDF export of payroll tax results (not requested)",
+    "Multi-employee batch payroll processing"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
