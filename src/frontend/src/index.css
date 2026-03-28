@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Warm neutral base with saffron/emerald accents */
+    --background: 0.98 0.01 45;
+    --foreground: 0.2 0.02 45;
+    --card: 1 0.005 45;
+    --card-foreground: 0.2 0.02 45;
+    --popover: 1 0.005 45;
+    --popover-foreground: 0.2 0.02 45;
+    /* Saffron primary */
+    --primary: 0.65 0.15 55;
+    --primary-foreground: 0.98 0 0;
+    /* Warm neutral secondary */
+    --secondary: 0.95 0.01 45;
+    --secondary-foreground: 0.25 0.02 45;
+    --muted: 0.95 0.01 45;
+    --muted-foreground: 0.5 0.01 45;
+    /* Emerald accent */
+    --accent: 0.7 0.14 155;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.9 0.01 45;
+    --input: 0.9 0.01 45;
+    --ring: 0.65 0.15 55;
+    /* Chart colors with warm/emerald palette */
+    --chart-1: 0.65 0.15 55;
+    --chart-2: 0.7 0.14 155;
+    --chart-3: 0.6 0.12 180;
+    --chart-4: 0.75 0.16 35;
+    --chart-5: 0.68 0.13 140;
+    --sidebar: 0.98 0.01 45;
+    --sidebar-foreground: 0.2 0.02 45;
+    --sidebar-primary: 0.65 0.15 55;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.95 0.01 45;
+    --sidebar-accent-foreground: 0.25 0.02 45;
+    --sidebar-border: 0.9 0.01 45;
+    --sidebar-ring: 0.708 0.01 45;
+  }
+
+  .dark {
+    --background: 0.18 0.02 45;
+    --foreground: 0.98 0.005 45;
+    --card: 0.22 0.02 45;
+    --card-foreground: 0.98 0.005 45;
+    --popover: 0.25 0.02 45;
+    --popover-foreground: 0.98 0.005 45;
+    /* Brighter saffron for dark mode */
+    --primary: 0.7 0.16 55;
+    --primary-foreground: 0.18 0.02 45;
+    --secondary: 0.25 0.02 45;
+    --secondary-foreground: 0.98 0.005 45;
+    --muted: 0.28 0.02 45;
+    --muted-foreground: 0.7 0.01 45;
+    /* Brighter emerald for dark mode */
+    --accent: 0.75 0.15 155;
+    --accent-foreground: 0.18 0.02 45;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.28 0.02 45;
+    --input: 0.3 0.02 45;
+    --ring: 0.7 0.16 55;
+    --chart-1: 0.7 0.16 55;
+    --chart-2: 0.75 0.15 155;
+    --chart-3: 0.65 0.13 180;
+    --chart-4: 0.78 0.17 35;
+    --chart-5: 0.72 0.14 140;
+    --sidebar: 0.22 0.02 45;
+    --sidebar-foreground: 0.98 0.005 45;
+    --sidebar-primary: 0.7 0.16 55;
+    --sidebar-primary-foreground: 0.98 0.005 45;
+    --sidebar-accent: 0.25 0.02 45;
+    --sidebar-accent-foreground: 0.98 0.005 45;
+    --sidebar-border: 0.28 0.02 45;
+    --sidebar-ring: 0.439 0.02 45;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    /* Automatic theme-driven background */
+    background: var(
+      --app-background,
+      linear-gradient(135deg, oklch(0.98 0.02 45) 0%, oklch(0.95 0.03 55) 100%)
+    );
+    min-height: 100vh;
+    transition: background 1s ease-in-out;
+  }
+
+  body {
+    @apply text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+  }
+
+  /* Enhanced scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+/* Modern gradient backgrounds */
+@layer utilities {
+  .bg-gradient-modern {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--background)) 0%,
+      oklch(var(--muted)) 100%
+    );
+  }
+
+  .bg-gradient-card {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--card)) 0%,
+      oklch(var(--muted) / 0.5) 100%
+    );
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/30 dark:bg-slate-900/30 border border-white/20 dark:border-slate-700/20;
+  }
+}
