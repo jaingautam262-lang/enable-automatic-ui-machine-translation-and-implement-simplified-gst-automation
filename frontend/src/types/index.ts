@@ -2,76 +2,76 @@ export * from "./gst-purchase";
 export * from "./gst-universal";
 
 export enum TransactionType {
-  Sale = 'sale',
-  Purchase = 'purchase',
-  Income = 'income',
-  Expense = 'expense',
-  Cash = 'cash',
+  Sale = "sale",
+  Purchase = "purchase",
+  Income = "income",
+  Expense = "expense",
+  Cash = "cash",
 }
 
 export enum InvoiceStatus {
-  Paid = 'paid',
-  Unpaid = 'unpaid',
-  Overdue = 'overdue',
+  Paid = "paid",
+  Unpaid = "unpaid",
+  Overdue = "overdue",
 }
 
 export enum GSTType {
-  Regular = 'regular',
-  Composition = 'composition',
+  Regular = "regular",
+  Composition = "composition",
 }
 
 export enum GSTRType {
-  GSTR1 = 'gstr1',
-  GSTR2B = 'gstr2b',
-  GSTR3B = 'gstr3b',
+  GSTR1 = "gstr1",
+  GSTR2B = "gstr2b",
+  GSTR3B = "gstr3b",
 }
 
 export enum GSTFilingStatus {
-  Draft = 'draft',
-  Submitted = 'submitted',
-  Filed = 'filed',
+  Draft = "draft",
+  Submitted = "submitted",
+  Filed = "filed",
 }
 
 export enum DebitCreditNoteType {
-  Debit = 'debit',
-  Credit = 'credit',
+  Debit = "debit",
+  Credit = "credit",
 }
 
 export enum ReconciliationStatus {
-  Matched = 'matched',
-  Unmatched = 'unmatched',
-  Pending = 'pending',
+  Matched = "matched",
+  Unmatched = "unmatched",
+  Pending = "pending",
 }
 
 export enum DepreciationMethod {
-  SLM = 'slm',
-  WDV = 'wdv',
+  SLM = "slm",
+  WDV = "wdv",
 }
 
 export enum DepreciationStandard {
-  IncomeTaxAct = 'incomeTaxAct',
-  AccountingStandard = 'accountingStandard',
+  IncomeTaxAct = "incomeTaxAct",
+  AccountingStandard = "accountingStandard",
 }
 
 export enum AssetType {
-  Fixed = 'fixed',
-  Current = 'current',
+  Fixed = "fixed",
+  Current = "current",
 }
 
 export enum LiabilityType {
-  Capital = 'capital',
-  Current = 'current',
+  Capital = "capital",
+  Current = "current",
 }
 
 // GST Scheme / Invoice Type for Indian GST context
 export type GSTScheme =
-  | 'Regular'
-  | 'Composition'
-  | 'Export_WithPayment'
-  | 'Export_WithoutPayment'
-  | 'SEZ_WithPayment'
-  | 'SEZ_WithoutPayment'
-  | 'DeemedExport';
+  | "Regular"
+  | "Composition"
+  | "Export_WithPayment"
+  | "Export_WithoutPayment"
+  | "SEZ_WithPayment"
+  | "SEZ_WithoutPayment"
+  | "DeemedExport";
 
 export interface Transaction {
   id: string;
@@ -516,7 +516,7 @@ export interface ComparativeDepreciation {
 }
 
 // Tax Rate Management
-export type TaxRateType = 'GST' | 'VAT' | 'IncomeTax' | 'Custom';
+export type TaxRateType = "GST" | "VAT" | "IncomeTax" | "Custom";
 
 export interface TaxRate {
   id: string;
@@ -529,3 +529,4 @@ export interface TaxRate {
   isPredefined: boolean;
   description?: string;
 }
+],
