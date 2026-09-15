@@ -1,5 +1,5 @@
-export * from './gst-purchase';
-export * from './gst-universal';
+export * from "./gst-purchase";
+export * from "./gst-universal";
 
 export enum TransactionType {
   Sale = 'sale',
@@ -74,7 +74,7 @@ export type GSTScheme =
   | 'DeemedExport';
 
 export interface Transaction {
-  id: bigint;
+  id: string;
   owner: string;
   transactionType: TransactionType;
   date: bigint;
@@ -83,11 +83,11 @@ export interface Transaction {
   description: string;
   associatedParty?: string;
   isCash: boolean;
-  referenceId?: bigint;
+  referenceId?: string;
 }
 
 export interface Product {
-  id: bigint;
+  id: string;
   owner: string;
   name: string;
   description: string;
@@ -104,7 +104,7 @@ export interface ProductLocation {
 }
 
 export interface InvoiceItem {
-  productId: bigint;
+  productId: string;
   description: string;
   quantity: bigint;
   unitPrice: number;
@@ -120,7 +120,7 @@ export interface CustomerGSTInfo {
 }
 
 export interface Invoice {
-  id: bigint;
+  id: string;
   owner: string;
   invoiceNumber: string;
   businessName: string;
@@ -177,9 +177,9 @@ export interface UserProfile {
 }
 
 export interface GSTTransaction {
-  id: bigint;
+  id: string;
   owner: string;
-  invoiceId: bigint;
+  invoiceId: string;
   hsnSacCode: string;
   cgst: number;
   sgst: number;
@@ -189,7 +189,7 @@ export interface GSTTransaction {
 }
 
 export interface GSTReturn {
-  id: bigint;
+  id: string;
   owner: string;
   period: string;
   returnType: GSTRType;
@@ -201,7 +201,7 @@ export interface GSTReturn {
 }
 
 export interface Deduction {
-  id: bigint;
+  id: string;
   owner: string;
   section: string;
   description: string;
@@ -228,10 +228,10 @@ export interface CashFlowSummary {
 }
 
 export interface DebitCreditNote {
-  id: bigint;
+  id: string;
   owner: string;
   type: DebitCreditNoteType;
-  linkedInvoiceId: bigint;
+  linkedInvoiceId: string;
   amount: number;
   reason: string;
   date: bigint;
@@ -260,7 +260,7 @@ export interface CAMessage {
 }
 
 export interface CAConsultation {
-  id: bigint;
+  id: string;
   admin: string;
   client: string;
   caContactInfo: CAContactInfo;
@@ -271,8 +271,8 @@ export interface CAConsultation {
 }
 
 export interface LedgerTransaction {
-  id: bigint;
-  accountId: bigint;
+  id: string;
+  accountId: string;
   owner: string;
   transactionType: string;
   amount: number;
@@ -281,7 +281,7 @@ export interface LedgerTransaction {
 }
 
 export interface LedgerAccount {
-  id: bigint;
+  id: string;
   owner: string;
   name: string;
   accountType: string;
@@ -290,23 +290,23 @@ export interface LedgerAccount {
 }
 
 export interface JournalEntryLine {
-  accountId: bigint;
+  accountId: string;
   accountName: string;
   debit: number;
   credit: number;
 }
 
 export interface JournalEntry {
-  id: bigint;
+  id: string;
   owner: string;
   date: bigint;
   description: string;
   entries: JournalEntryLine[];
-  associatedTransactionId?: bigint;
+  associatedTransactionId?: string;
 }
 
 export interface BankStatementEntry {
-  id: bigint;
+  id: string;
   owner: string;
   date: bigint;
   description: string;
@@ -320,7 +320,7 @@ export interface MatchedTransaction {
 }
 
 export interface ReconciliationResult {
-  id: bigint;
+  id: string;
   owner: string;
   matchedTransactions: MatchedTransaction[];
   unmatchedBankEntries: BankStatementEntry[];
@@ -330,9 +330,9 @@ export interface ReconciliationResult {
 }
 
 export interface TDSTransaction {
-  id: bigint;
+  id: string;
   owner: string;
-  transactionId: bigint;
+  transactionId: string;
   tdsRate: number;
   tdsAmount: number;
   panNumber: string;
@@ -342,7 +342,7 @@ export interface TDSTransaction {
 }
 
 export interface TDSConfiguration {
-  id: bigint;
+  id: string;
   owner: string;
   transactionType: string;
   amountThreshold: number;
@@ -350,9 +350,9 @@ export interface TDSConfiguration {
 }
 
 export interface TCSRecord {
-  id: bigint;
+  id: string;
   owner: string;
-  transactionId: bigint;
+  transactionId: string;
   tcsRate: number;
   tcsAmount: number;
   tanNumber: string;
@@ -362,7 +362,7 @@ export interface TCSRecord {
 }
 
 export interface TCSConfiguration {
-  id: bigint;
+  id: string;
   owner: string;
   transactionType: string;
   amountThreshold: number;
@@ -370,14 +370,14 @@ export interface TCSConfiguration {
 }
 
 export interface DirectExpense {
-  id: bigint;
+  id: string;
   name: string;
   amount: number;
   date: bigint;
 }
 
 export interface TradingAccount {
-  id: bigint;
+  id: string;
   owner: string;
   openingStock: number;
   purchases: number;
@@ -391,21 +391,21 @@ export interface TradingAccount {
 }
 
 export interface OperatingExpense {
-  id: bigint;
+  id: string;
   name: string;
   amount: number;
   date: bigint;
 }
 
 export interface Income {
-  id: bigint;
+  id: string;
   name: string;
   amount: number;
   date: bigint;
 }
 
 export interface ProfitAndLossStatement {
-  id: bigint;
+  id: string;
   owner: string;
   grossProfit: number;
   openingStock: number;
@@ -427,7 +427,7 @@ export interface ProfitAndLossStatement {
 }
 
 export interface BalanceSheetAsset {
-  id: bigint;
+  id: string;
   name: string;
   amount: number;
   assetType: AssetType;
@@ -435,7 +435,7 @@ export interface BalanceSheetAsset {
 }
 
 export interface BalanceSheetLiability {
-  id: bigint;
+  id: string;
   name: string;
   amount: number;
   liabilityType: LiabilityType;
@@ -443,7 +443,7 @@ export interface BalanceSheetLiability {
 }
 
 export interface BalanceSheet {
-  id: bigint;
+  id: string;
   owner: string;
   assets: BalanceSheetAsset[];
   liabilities: BalanceSheetLiability[];
@@ -457,7 +457,7 @@ export interface BalanceSheet {
 }
 
 export interface BillingRecord {
-  id: bigint;
+  id: string;
   clientName: string;
   serviceType: string;
   amount: number;
@@ -466,7 +466,7 @@ export interface BillingRecord {
 }
 
 export interface CharteredAccountantProfile {
-  id: bigint;
+  id: string;
   name: string;
   firmName: string;
   contactDetails: string;
@@ -485,7 +485,7 @@ export interface DepreciationParameters {
 }
 
 export interface Asset {
-  id: bigint;
+  id: string;
   owner: string;
   description: string;
   cost: number;
@@ -495,8 +495,8 @@ export interface Asset {
 }
 
 export interface DepreciationRecord {
-  id: bigint;
-  assetId: bigint;
+  id: string;
+  assetId: string;
   owner: string;
   standard: DepreciationStandard;
   year: bigint;
@@ -507,7 +507,7 @@ export interface DepreciationRecord {
 }
 
 export interface ComparativeDepreciation {
-  assetId: bigint;
+  assetId: string;
   assetName: string;
   cost: number;
   year: bigint;
